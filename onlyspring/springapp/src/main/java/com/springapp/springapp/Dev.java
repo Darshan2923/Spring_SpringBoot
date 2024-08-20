@@ -1,27 +1,52 @@
 package com.springapp.springapp;
 
 public class Dev {
-    private int age;
-    private Laptop laptop;
 
-    public Dev(int age) {
-        this.age = age;
+    private Computer com;
+
+    public Dev() {
+        System.out.println("Dev constructor");
     }
 
-    public int getAge() {
-        return age;
+    public Dev(Computer comp) {
+        this.com = comp;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public Computer getCom() {
+        return com;
     }
 
-    public Laptop getLap() {
-        return laptop;
+    public void setCom(Computer com) {
+        this.com = com;
     }
 
     public void build() {
-        laptop.compile();
-        System.out.println("Making an awesome project");
+
+        System.out.println("working on Awesome Project");
+        com.compile();
     }
+
+    // private int age;
+    // private Laptop laptop;
+
+    // public Dev(int age) {
+    // this.age = age;
+    // }
+
+    // public int getAge() {
+    // return age;
+    // }
+
+    // public void setAge(int age) {
+    // this.age = age;
+    // }
+
+    // public Laptop getLap() {
+    // return laptop;
+    // }
+
+    // public void build() {
+    // laptop.compile();
+    // System.out.println("Making an awesome project");
+    // }
 }

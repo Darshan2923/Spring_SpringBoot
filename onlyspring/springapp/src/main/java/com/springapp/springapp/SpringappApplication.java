@@ -9,8 +9,6 @@ public class SpringappApplication {
 		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml")) {
 			Dev obj = context.getBean(Dev.class);
 			obj.build();
-			System.out.println(obj.getAge());
-			System.out.println(obj.getLap());
 		} catch (BeansException e) {
 			e.printStackTrace();
 		}
