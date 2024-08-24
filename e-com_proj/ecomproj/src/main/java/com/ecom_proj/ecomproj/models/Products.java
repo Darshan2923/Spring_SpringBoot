@@ -23,17 +23,19 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private String brand;
     private BigDecimal price;
     private String category;
 
     // Already handled in frontend
     // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "DD-MM-YYYY")
-    private Date release_date;
-    private boolean available;
-    private int quantity;
+    private Date releaseDate;
+    private boolean productAvailable;
+    private int stockQuantity;
 
     // Image Entities
-
+    private String imageName;
+    private String imageType;
+    private byte[] imageData;
 }
