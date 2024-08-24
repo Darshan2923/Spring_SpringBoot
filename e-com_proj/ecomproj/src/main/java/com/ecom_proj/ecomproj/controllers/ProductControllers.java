@@ -1,5 +1,6 @@
 package com.ecom_proj.ecomproj.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +22,7 @@ import com.ecom_proj.ecomproj.services.ProductService;
 // import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin
@@ -63,4 +67,37 @@ public class ProductControllers {
                 .body(imgFile);
     }
 
+    @PutMapping("/products/{prodId}")
+    public ResponseEntity<String> updateProd(@PathVariable int prodId, @RequestPart Products product,
+            @RequestPart MultipartFile imgFile) {
+        Products prod3;
+        try {
+            prod3 = service.updateProd(prodId, product, imgFile);
+        } catch (IOException e) {
+            return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
+        }
+        if (prod3 != null)
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+
+        else
+            return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
+
+    }
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<String> deleteProd(@PathVariable int id) {
+        Products prod4 = service.getOneProduct(id);
+        if (prod4 != null) {
+            service.deleteProd(id);
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+        } else
+            return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
+
+    }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Products>> searchProducts(@RequestParam String keyword) {
+        List<Products> prodx = service.searchProducts(keyword);
+        return new ResponseEntity<>(prodx, HttpStatus.OK);
+    }
 }
