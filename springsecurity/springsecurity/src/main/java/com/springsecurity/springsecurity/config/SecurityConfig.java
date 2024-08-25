@@ -18,7 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // import org.springframework.security.core.userdetails.UserDetailsService;
 // import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.springsecurity.springsecurity.filters.JwtFilter;
 import com.springsecurity.springsecurity.services.MyUserDetailsService;
 
 @Configuration
@@ -27,6 +29,9 @@ public class SecurityConfig {
 
     @Autowired
     private MyUserDetailsService userdetailsservice;
+
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -43,6 +48,7 @@ public class SecurityConfig {
         http.httpBasic(Customizer.withDefaults());
         // Making the session stateless
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

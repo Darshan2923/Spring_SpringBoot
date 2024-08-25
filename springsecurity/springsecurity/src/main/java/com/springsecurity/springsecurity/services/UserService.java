@@ -31,7 +31,7 @@ public class UserService {
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
         if (authentication.isAuthenticated())
-            return service.generateToken();
+            return service.generateToken(user.getUsername());
 
         return "Failed";
     }
