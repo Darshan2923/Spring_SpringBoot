@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ecom_proj.ecomproj.models.Products;
-import com.ecom_proj.ecomproj.repo.ProductRepo;
+import com.ecom_proj.ecomproj.repo.ProductRepository;
 
 @Service
 public class ProductService {
 
     @Autowired
-    private ProductRepo repo;
+    private ProductRepository repo;
 
     public List<Products> getAllProducts() {
         return repo.findAll();
@@ -24,17 +24,19 @@ public class ProductService {
         return repo.findById(prodId).orElse(null);
     }
 
-    public Products addProduct(Products product, MultipartFile imgFile) throws IOException {
-        product.setImageName(imgFile.getOriginalFilename());
-        product.setImageType(imgFile.getContentType());
-        product.setImageData(imgFile.getBytes());
+    public Products addProduct(Products product, MultipartFile imageFile) throws IOException {
+        product.setImageName(imageFile.getOriginalFilename());
+        product.setImageType(imageFile.getContentType());
+        product.setImageData(imageFile.getBytes());
+
         return repo.save(product);
     }
 
-    public Products updateProd(int prodId, Products product, MultipartFile imgFile) throws IOException {
-        product.setImageData(imgFile.getBytes());
-        product.setImageName(imgFile.getOriginalFilename());
-        product.setImageType(imgFile.getContentType());
+    public Products updateProduct(int id, Products product, MultipartFile imageFile) throws IOException {
+
+        product.setImageName(imageFile.getOriginalFilename());
+        product.setImageType(imageFile.getContentType());
+        product.setImageData(imageFile.getBytes());
         return repo.save(product);
     }
 

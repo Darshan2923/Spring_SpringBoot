@@ -49,10 +49,10 @@ public class ProductControllers {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<?> addProduct(@RequestPart Products product, @RequestPart MultipartFile imgFile) {
+    public ResponseEntity<?> addProduct(@RequestPart Products product, @RequestPart MultipartFile imageFile) {
         try {
-            Products prod1 = service.addProduct(product, imgFile);
-            return new ResponseEntity<>(prod1, HttpStatus.OK);
+            Products product1 = service.addProduct(product, imageFile);
+            return new ResponseEntity<>(product1, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -67,20 +67,21 @@ public class ProductControllers {
                 .body(imgFile);
     }
 
-    @PutMapping("/products/{prodId}")
-    public ResponseEntity<String> updateProd(@PathVariable int prodId, @RequestPart Products product,
-            @RequestPart MultipartFile imgFile) {
-        Products prod3;
+    @PutMapping("/products/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestPart Products product,
+            @RequestPart MultipartFile imageFile) {
+
+        Products product1 = null;
         try {
-            prod3 = service.updateProd(prodId, product, imgFile);
+            product1 = service.updateProduct(id, product, imageFile);
         } catch (IOException e) {
             return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
         }
-        if (prod3 != null)
-            return new ResponseEntity<>("Updated", HttpStatus.OK);
-
-        else
+        if (product1 != null) {
+            return new ResponseEntity<>("updated", HttpStatus.OK);
+        } else {
             return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
+        }
 
     }
 
