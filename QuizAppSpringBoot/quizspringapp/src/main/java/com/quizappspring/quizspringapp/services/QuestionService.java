@@ -1,7 +1,7 @@
 package com.quizappspring.quizspringapp.services;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.quizappspring.quizspringapp.models.Questions;
@@ -17,7 +17,12 @@ public class QuestionService {
     }
 
     public List<Questions> getAllQuestions() {
-        return questionsRepo.findAll();
+        try {
+            return questionsRepo.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>(); // Return an empty list in case of an error
     }
 
     public List<Questions> getQuestionsByCategory(String category) {
@@ -25,9 +30,12 @@ public class QuestionService {
     }
 
     public String addQuestion(Questions questions) {
-
-        questionsRepo.save(questions);
-        return "Success";
+        try {
+            questionsRepo.save(questions);
+            return "Success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failure";
+        }
     }
-
 }

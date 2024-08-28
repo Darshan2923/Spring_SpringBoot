@@ -2,6 +2,8 @@ package com.quizappspring.quizspringapp.controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,18 +25,21 @@ public class QuestionController {
     }
 
     @GetMapping("/allQuestions")
-    public List<Questions> getAllQuestions() {
-        return questionService.getAllQuestions();
+    public ResponseEntity<List<Questions>> getAllQuestions() {
+        List<Questions> questions = questionService.getAllQuestions();
+        return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
     @GetMapping("/category/{category}")
-    public List<Questions> getQuestionsByCategory(@PathVariable String category) {
-        return questionService.getQuestionsByCategory(category);
+    public ResponseEntity<List<Questions>> getQuestionsByCategory(@PathVariable String category) {
+        List<Questions> questions = questionService.getQuestionsByCategory(category);
+        return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
     @PostMapping("/addQuestions")
-    public String addQuestion(@RequestBody Questions questions) {
-        return questionService.addQuestion(questions);
+    public ResponseEntity<String> addQuestion(@RequestBody Questions questions) {
+        String response = questionService.addQuestion(questions);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 }
