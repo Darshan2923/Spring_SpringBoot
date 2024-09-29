@@ -15,17 +15,17 @@ public class FreecodecampspringApplication {
 		SpringApplication.run(FreecodecampspringApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(
-			AuthorRepo repository) {
-		return args -> {
-			var author = Author.builder()
-					.firstName("Darshan")
-					.lastName("Patel")
-					.age(20)
-					.email("contact@darshan.com")
-					.build();
-			repository.save(author);
-		};
-	}
+	// @Bean
+	// public CommandLineRunner commandLineRunner(
+	// AuthorRepo repository) {
+	// return args -> {
+	// var author = Author.builder()
+	// .firstName("Darshan")
+	// .lastName("Patel")
+	// .age(20)
+	// .email("contact@darshan.com")
+	// .build();
+	// repository.save(author);
+	// };
+	// }
 }
