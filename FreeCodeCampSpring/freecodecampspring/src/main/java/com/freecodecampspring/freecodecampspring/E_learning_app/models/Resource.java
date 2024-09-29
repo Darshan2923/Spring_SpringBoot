@@ -1,5 +1,6 @@
 package com.freecodecampspring.freecodecampspring.E_learning_app.models;
 
+// import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -18,7 +19,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @DiscriminatorColumn(name = "resource_type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Resource {
     @Id
     @GeneratedValue

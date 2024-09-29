@@ -12,6 +12,8 @@ import jakarta.persistence.Entity;
 // import jakarta.persistence.GenerationType;
 // import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+// import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 // import jakarta.persistence.SequenceGenerator;
 // import jakarta.persistence.PrePersist;
 // import jakarta.persistence.PreUpdate;
@@ -29,6 +31,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Table(name = "e_author")
 @Entity
+@NamedQuery(name = "Author.findByNamedQuery", query = "select a from Author a where a.age>=:age")
 @AllArgsConstructor
 // @Builder
 @SuperBuilder

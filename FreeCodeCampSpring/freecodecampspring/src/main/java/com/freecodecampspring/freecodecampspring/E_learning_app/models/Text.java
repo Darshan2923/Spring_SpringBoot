@@ -1,5 +1,6 @@
 package com.freecodecampspring.freecodecampspring.E_learning_app.models;
 
+// import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
+// @DiscriminatorValue("T")
 public class Text extends Resource {
     private String context;
 }

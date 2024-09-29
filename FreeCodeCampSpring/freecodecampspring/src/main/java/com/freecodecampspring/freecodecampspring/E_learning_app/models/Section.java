@@ -2,6 +2,7 @@ package com.freecodecampspring.freecodecampspring.E_learning_app.models;
 
 import java.util.List;
 
+// import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 // import jakarta.persistence.GeneratedValue;
 // import jakarta.persistence.Id;
@@ -22,6 +23,7 @@ import lombok.experimental.SuperBuilder;
 // @Builder
 @SuperBuilder
 @Entity
+// @DiscriminatorValue("S")
 public class Section extends BaseEntity {
 
     private String name;
