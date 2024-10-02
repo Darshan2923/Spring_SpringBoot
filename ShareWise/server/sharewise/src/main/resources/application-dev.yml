@@ -1,8 +1,8 @@
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/sharewise
-        username: username
-        password: password
+        username: postgres
+        password: root
         driver-class-name: org.postgresql.Driver
 
     jpa:
@@ -37,5 +37,12 @@ application:
         jwt:
             secret-key: jwt_secret
             expiration: 8460000
+    mailing:
+        frontend:
+            activation-url: http://localhost:5173/activate-account
+
+
+server:
+    port: 8088
 
     
