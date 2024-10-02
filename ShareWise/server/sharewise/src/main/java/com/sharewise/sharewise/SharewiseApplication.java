@@ -11,7 +11,7 @@ import com.sharewise.sharewise.role.Role;
 import com.sharewise.sharewise.role.RoleRepo;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableAsync
 public class SharewiseApplication {
 
