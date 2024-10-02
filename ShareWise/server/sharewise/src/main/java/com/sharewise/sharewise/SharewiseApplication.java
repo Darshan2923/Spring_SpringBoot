@@ -20,7 +20,7 @@ public class SharewiseApplication {
 	}
 
 	@Bean
-	public CommandLineRunner runner(RoleRepo roleRepo) {
+	CommandLineRunner runner(RoleRepo roleRepo) {
 		return args -> {
 			if (roleRepo.findByName("USER").isEmpty()) {
 				roleRepo.save(

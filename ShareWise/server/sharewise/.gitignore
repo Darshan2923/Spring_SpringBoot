@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.env
+!**/src/main/**/application-dev.yml
+
+

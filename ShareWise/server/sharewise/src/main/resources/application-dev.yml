@@ -1,48 +1,42 @@
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5432/sharewise
-        username: postgres
-        password: root
-        driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sharewise
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
 
-    jpa:
-        hibernate:
-            ddl-auto: update
-        show-sql: true
-        properties:
-            hibernate:
-                format-sql: true
-        database: postgresql
-        database-platform: org.hibernate.dialect.PostgreSQLDialect 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect  
+    database: postgresql
 
-    mail:
-        host: localhost
-        port: 1025
-        username: darshan
-        password: password
-        properties: 
-            mail:
-                smtp:
-                    trust: "*"
-                auth: true
-                starttls:
-                    enable: true
-                connectiontimeout: 5000
-                timeout: 3000
-                writetimeout: 5000
-
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: <your_email>
+    password: <your_password>
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 application:
-    security:
-        jwt:
-            secret-key: jwt_secret
-            expiration: 8460000
-    mailing:
-        frontend:
-            activation-url: http://localhost:5173/activate-account
-
+  security:
+    jwt:
+      secret-key: jwt_secret
+      expiration: 8460000
+  mailing:
+    frontend:
+      activation-url: http://localhost:5173/activate-account
 
 server:
-    port: 8088
-
-    
+  port: 8088
