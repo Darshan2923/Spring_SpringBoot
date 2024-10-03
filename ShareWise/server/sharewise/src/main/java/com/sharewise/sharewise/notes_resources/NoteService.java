@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.sharewise.sharewise.commonFields.PageResponse;
+import com.sharewise.sharewise.history.NotesTransactionHistory;
 import com.sharewise.sharewise.user.User;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -21,6 +22,7 @@ public class NoteService {
 
     private final NotesMapper notesMapper;
     private final NotesRepo notesRepo;
+    private final NotesTransactionHistoryRepo notesTransactionHistoryRepo;
 
     public Integer saveNotes(NotesRequest request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
@@ -51,5 +53,41 @@ public class NoteService {
                 notes.getTotalPages(),
                 notes.isFirst(),
                 notes.isLast());
+    }
+
+    public PageResponse<NotesResponse> findAllBooksByOwner(int page, int size, Authentication connectedUser) {
+        User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        Page<Notes> notes = notesRepo.findAll(NoteSpecification.withOwnerId(user.getId()), pageable);
+        List<NotesResponse> notesResponses = notes.stream()
+                .map(notesMapper::toNotesResponse)
+                .toList();
+
+        return new PageResponse<>(
+                notesResponses,
+                notes.getNumber(),
+                notes.getSize(),
+                notes.getTotalElements(),
+                notes.getTotalPages(),
+                notes.isFirst(),
+                notes.isLast());
+    }
+
+    public PageResponse<BorrowedNotesResponse> findAllBorrowedBooks(int page, int size, Authentication connectedUser) {
+        User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        Page<NotesTransactionHistory> allBorrowedNotes = notesTransactionHistoryRepo.findALlBorrowedNotes(pageable,
+                user.getId());
+        List<BorrowedNotesResponse> notesResponses = allBorrowedNotes.stream()
+                .map(notesMapper::toBorrowedNotesResponse)
+                .toList();
+        return new PageResponse<>(
+                notesResponses,
+                allBorrowedNotes.getNumber(),
+                allBorrowedNotes.getSize(),
+                allBorrowedNotes.getTotalElements(),
+                allBorrowedNotes.getTotalPages(),
+                allBorrowedNotes.isFirst(),
+                allBorrowedNotes.isLast());
     }
 }

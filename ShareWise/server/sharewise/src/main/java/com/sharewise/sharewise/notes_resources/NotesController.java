@@ -46,4 +46,20 @@ public class NotesController {
         return ResponseEntity.ok(notesService.findAllBooks(page, size, connectedUser));
     }
 
+    @GetMapping("/owner")
+    public ResponseEntity<PageResponse<NotesResponse>> findAllBooksByOwner(
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+            @RequestParam(name = "size", defaultValue = "10", required = false) int size,
+            Authentication connectedUser) {
+        return ResponseEntity.ok(notesService.findAllBooksByOwner(page, size, connectedUser));
+    }
+
+    @GetMapping("/borrowed")
+    public ResponseEntity<PageResponse<BorrowedNotesResponse>> findAllBorrowedBooks(
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+            @RequestParam(name = "size", defaultValue = "10", required = false) int size,
+            Authentication connectedUser) {
+        return ResponseEntity.ok(notesService.findAllBorrowedBooks(page, size, connectedUser));
+    }
+
 }

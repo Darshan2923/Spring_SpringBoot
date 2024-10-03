@@ -3,6 +3,8 @@ package com.sharewise.sharewise.notes_resources;
 // import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Service;
 
+import com.sharewise.sharewise.history.NotesTransactionHistory;
+
 @Service
 public class NotesMapper {
 
@@ -28,6 +30,17 @@ public class NotesMapper {
                 .shareable(book.isShareable())
                 .owner(book.getOwner().fullName())
                 // .cover(FileUtils.readFileFromLocation(book.getBookCover()))
+                .build();
+    }
+
+    public BorrowedNotesResponse toBorrowedNotesResponse(NotesTransactionHistory history) {
+        return BorrowedNotesResponse.builder()
+                .id(history.getNotes().getId())
+                .title(history.getNotes().getTitle())
+                .authorName(history.getNotes().getAuthorName())
+                .rate(history.getNotes().getRate())
+                .returned(history.isReturned())
+                .returnApproved(history.isReturnApproved())
                 .build();
     }
 }

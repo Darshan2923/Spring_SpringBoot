@@ -3,9 +3,10 @@ package com.sharewise.sharewise.notes_resources;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
-public interface NotesRepo extends JpaRepository<Notes, Integer> {
+public interface NotesRepo extends JpaRepository<Notes, Integer>, JpaSpecificationExecutor<Notes> {
 
     @Query("""
             SELECT note
