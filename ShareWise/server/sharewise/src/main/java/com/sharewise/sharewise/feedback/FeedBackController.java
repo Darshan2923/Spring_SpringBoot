@@ -33,7 +33,7 @@ public class FeedBackController {
 
     @GetMapping("/notes/{notes-id}")
     public ResponseEntity<PageResponse<FeedBackResponse>> findAllFeedbackByNotes(
-            @PathVariable("note-id") Integer notesId,
+            @PathVariable("notes-id") Integer notesId,
             @RequestParam(name = "page", defaultValue = "0", required = false) int page,
             @RequestParam(name = "size", defaultValue = "0", required = false) int size,
             Authentication connectedUser) {

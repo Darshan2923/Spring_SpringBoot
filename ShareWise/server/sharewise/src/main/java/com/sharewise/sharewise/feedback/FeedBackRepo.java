@@ -10,7 +10,7 @@ public interface FeedBackRepo extends JpaRepository<FeedBack, Integer> {
     @Query("""
             SELECT feedback
             FROM FeedBack feedback
-            WHERE feedback.note.id = :notesId
+            WHERE feedback.notes.id = :notesId
             """)
     Page<FeedBack> findAllByNotesId(Integer notesId, Pageable pageable);
 

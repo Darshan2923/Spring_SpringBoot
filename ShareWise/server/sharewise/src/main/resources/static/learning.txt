@@ -1,0 +1,12 @@
+For the documentation:
+http://localhost:8088/api/v1/swagger-ui/index.html#/
+
+
+copy the code from :
+http://localhost:8088/api/v1/v3/api-docs
+and create a folder openapi on react app
+make json and paste all there
+
+Generate your opeanapi client services by running
+>> npm install @openapitools/openapi-generator-cli 
+>> npx @openapitools/openapi-generator-cli generate -i ./src/openapi/openapi.json -g javascript -o ./src/services
