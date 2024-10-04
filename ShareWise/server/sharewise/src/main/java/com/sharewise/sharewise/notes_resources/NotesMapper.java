@@ -29,7 +29,7 @@ public class NotesMapper {
                 .archived(book.isArchived())
                 .shareable(book.isShareable())
                 .owner(book.getOwner().fullName())
-                // .cover(FileUtils.readFileFromLocation(book.getBookCover()))
+                .notes_content(FileUtils.readFileFromLocation(book.getNotes_content()))
                 .build();
     }
 
