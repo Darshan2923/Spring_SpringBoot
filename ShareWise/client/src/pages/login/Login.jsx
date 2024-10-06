@@ -36,7 +36,7 @@ const Login = () => {
         try {
             const res = await authenticate(authRequest); // Assuming this returns an object with a token
             tokenService.setToken(res.data.token); // Save the token using your tokenService
-            navigate('/notes'); // Navigate to the notes page
+            navigate('/notes');
         } catch (err) {
             console.error(err);
             if (err.response && err.response.data) {
