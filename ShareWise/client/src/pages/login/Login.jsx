@@ -20,7 +20,18 @@ const Login = () => {
     };
 
     const login = async () => {
-        setErrorMsg([]);
+        setErrorMsg([]); // Reset error messages
+
+        // Check for empty fields
+        if (!authRequest.email) {
+            setErrorMsg((prev) => [...prev, "Email shouldn't be empty"]);
+            return;
+        }
+
+        if (!authRequest.password) {
+            setErrorMsg((prev) => [...prev, "Password shouldn't be empty"]);
+            return;
+        }
 
         try {
             const res = await authenticate(authRequest); // Assuming this returns an object with a token
@@ -29,9 +40,10 @@ const Login = () => {
         } catch (err) {
             console.error(err);
             if (err.response && err.response.data) {
+                // Display validation errors from backend
                 setErrorMsg(err.response.data.validationErrors || [err.response.data.errorMsg]);
             } else {
-                setErrorMsg(['An unknown error occurred']);
+                setErrorMsg(['Invalid username or password']);
             }
         }
     };
