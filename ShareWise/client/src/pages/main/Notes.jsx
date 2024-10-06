@@ -3,7 +3,9 @@ import React from 'react'
 
 const Notes = () => {
     return (
-        <div>Notes</div>
+        <div>
+            This is the main page
+        </div>
     )
 }
 
