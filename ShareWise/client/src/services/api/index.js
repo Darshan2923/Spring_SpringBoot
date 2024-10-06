@@ -12,3 +12,9 @@ export const authenticate = async ({ email, password }) => {
 export const register = async ({ email, firstname, lastname, password }) => {
     return await API.post('/auth/register', { email, firstname, lastname, password });
 };
+
+export const confirmAccount = async ({ token }) => {
+    return await API.post('/auth/activate-account', { token });
+};
+
+
