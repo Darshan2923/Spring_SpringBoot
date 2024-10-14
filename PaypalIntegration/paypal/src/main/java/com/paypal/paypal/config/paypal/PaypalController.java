@@ -15,6 +15,7 @@ import com.paypal.base.rest.PayPalRESTException;
 
 import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,11 +30,15 @@ public class PaypalController {
     }
 
     @PostMapping("/payment/create")
-    public RedirectView createPayment() {
+    public RedirectView createPayment(
+            @RequestParam("method") String method,
+            @RequestParam("amount") String amount,
+            @RequestParam("currency") String currency,
+            @RequestParam("description") String description) {
         try {
             String cancelUrl = "http://localhost:8080/payment/cancel";
             String successUrl = "http://localhost:8080/payment/success";
-            Payment payment = paypalService.createPayment(10.0, "INR", "paypal", "sale", "Payment description",
+            Payment payment = paypalService.createPayment(Double.valueOf(amount), currency, method, "sale", description,
                     cancelUrl, successUrl);
             for (Links links : payment.getLinks()) {
                 if (links.getRel().equals("approval_url")) {
@@ -42,10 +47,35 @@ public class PaypalController {
             }
 
         } catch (PayPalRESTException e) {
-            // TODO: handle exception
             log.error("Error occured ::", e);
         }
         return new RedirectView("/payment/error");
+    }
+
+    @GetMapping("/payment/success")
+    public String paymentSuccess(
+            @RequestParam("payment-id") String paymentId,
+            @RequestParam("PayerID") String payerId) {
+        try {
+            Payment payment = paypalService.executePayment(paymentId, payerId);
+            if (payment.getState().equals("approved")) {
+                return "paymentSuccess";
+            }
+
+        } catch (PayPalRESTException e) {
+            log.error("Error occured ::", e);
+        }
+        return "paymentSuccess";
+    }
+
+    @GetMapping("/payment/cancel")
+    public String paymentCancel() {
+        return "paymentCancel";
+    }
+
+    @GetMapping("/payment/error")
+    public String paymentError() {
+        return "paymentError";
     }
 
 }
