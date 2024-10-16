@@ -5,3 +5,8 @@ Needed dependencies for frontend:
 "stompjs"
 
 setting up websocket in frontend is left
+
+
+--> most annoying error: global is not defined
+
+--> make a file: window-global-fix.ts in src and in package.json...
