@@ -1,0 +1,7 @@
+Needed dependencies for frontend:
+"net":"^1.0.2",
+"quill":"^2.0.2",
+"sockjs-client",
+"stompjs"
+
+setting up websocket in frontend is left
