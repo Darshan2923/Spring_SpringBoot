@@ -64,3 +64,26 @@ function handleLogout() {
 
 const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", handleLogout);
+
+
+function handleNewMeeting() {
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+    window.open(`video_conference.html?username=${connectedUser.username}`, "_blank");
+}
+
+// Attach the handleNewMeeting function to the "Create a New Meeting" button
+const newMeetingBtn = document.getElementById("newMeetingBtn");
+newMeetingBtn.addEventListener("click", handleNewMeeting);
+
+
+function handleJoinMeeting() {
+    const roomId = document.getElementById("meetingName").value;
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+
+    const url = `video_conference.html?roomID=${roomId}&username=${connectedUser.username}`;
+
+    window.open(url, "_blank");
+}
+
+const joinMeetingBtn = document.getElementById("joinMeetingBtn");
+joinMeetingBtn.addEventListener("click", handleJoinMeeting);
