@@ -32,7 +32,7 @@ public class VideochatApplication {
 					.build());
 
 			service.register(User.builder()
-					.username("Anny")
+					.username("Anna")
 					.email("anna@mail.com")
 					.password("aaa")
 					.build());
