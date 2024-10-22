@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "students-reactive")
+@Table(name = "students")
 public class Student {
 
     @Id

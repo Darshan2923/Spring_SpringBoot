@@ -1,6 +1,11 @@
 spring:
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/SpringFirstProject
-    username: postgres
-    password: root
+    r2dbc:
+        url: r2dbc:postgresql://localhost:5432/SpringFirstProject
+        username: postgres
+        password: root
+    flyway:
+        url: jdbc:postgresql://localhost:5432/SpringFirstProject
+        user: postgres
+        password: root
+ 
 
