@@ -22,8 +22,8 @@ public class SpringReactiveProjApplication {
 			for (int i = 0; i < 100; i++) {
 				service.save(Student
 						.builder()
-						.firstName("Darshan" + i)
-						.lastName("Patel" + i)
+						.firstname("Darshan" + i)
+						.lastname("Patel" + i)
 						.age(i)
 						.build())
 						.subscribe();
