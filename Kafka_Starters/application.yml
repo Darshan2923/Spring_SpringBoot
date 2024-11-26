@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: kafkaproj1
+
+  kafka:
+    # Kafka Broker(s) (comma-separated if you have multiple brokers)
+    bootstrap-servers: localhost:9093
+
+    # Consumer Configuration
+    consumer:
+      # Consumer Group ID (should be unique per consumer group)
+      group-id: test-group
+      # How Kafka should handle offset resets when no initial offset is found
+      auto-offset-reset: earliest
+      # The deserializers for the key and value
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    # Producer Configuration
+    producer:
+      # Acknowledgment mode for producer requests
+      acks: all
+      # Serializers for the key and value
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    # Common configuration (optional, you can configure more advanced features like retries, etc.)
+    properties:
+      # You can add any additional Kafka properties here if needed
+      # Example: 
+      # max.block.ms: 5000
