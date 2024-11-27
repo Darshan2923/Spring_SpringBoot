@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: wizstream
+    
+    # database config
+    datasource:
+        url: jdbc:postgresql://localhost:5432/SpringFirstProject
+        username: root
+        password: darshan
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+    
+    # hibernate config
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+
