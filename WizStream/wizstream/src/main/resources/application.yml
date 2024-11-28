@@ -31,6 +31,11 @@ spring:
 files:
     video: videos/
 
+file:
+    video:
+        hsl:
+            videos_hsl/
+
 server:
   port: 8080
 
