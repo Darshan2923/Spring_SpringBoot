@@ -34,6 +34,7 @@ public class VideoServiceImpl implements VideoService {
 
     @PostConstruct
     public void init() {
+        System.out.println("Video directory: " + dir);
         File file = new File(dir);
 
         if (!file.exists()) {
@@ -83,8 +84,8 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public Video getVideo(String videoId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getVideo'");
+        Video video = videoRepository.findById(videoId).orElseThrow(() -> new RuntimeException("Video not found"));
+        return video;
     }
 
     @Override
@@ -95,8 +96,7 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<Video> getAllVideos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllVideos'");
+        return videoRepository.findAll();
     }
 
 }

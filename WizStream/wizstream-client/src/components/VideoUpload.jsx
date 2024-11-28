@@ -57,12 +57,12 @@ const VideoUpload = () => {
             formData.append("file", selectedFile);
             const response = await axios.post("http://localhost:8080/api/v1/videos", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
+                withCredentials: true,
                 onUploadProgress: (progressEvent) => {
                     const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    console.log(progress);
                     setProgress(progress);
                 }
-            })
+            });
             setMessage("File uploaded");
             setUploading(false);
             toast.success("File uploaded!!!")
