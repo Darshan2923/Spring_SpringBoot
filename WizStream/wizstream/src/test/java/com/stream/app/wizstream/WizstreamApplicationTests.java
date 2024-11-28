@@ -15,7 +15,7 @@ class WizstreamApplicationTests {
 	@Test
 	void contextLoads() {
 
-		videoService.processVideo("<your_video_id>", null);
+		videoService.processVideo("<your_video_id>");
 	}
 
 }
