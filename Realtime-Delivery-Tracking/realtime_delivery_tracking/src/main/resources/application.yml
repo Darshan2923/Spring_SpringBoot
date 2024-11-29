@@ -1,0 +1,18 @@
+spring:
+    application:
+        name: realtime_delivery_tracking
+    kafka:
+        producer:
+            bootstrap-servers: kafka:9093  # Correct Kafka container hostname and port
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        
+        consumer:
+            bootstrap-servers: kafka:9093  # Correct Kafka container hostname and port
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            group-id: user-group
+            # auto-offset-reset: earliest #Uncomment to consume from the beginning 
+
+server:
+  port: 8082
