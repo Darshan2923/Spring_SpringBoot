@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: ratingservice
+    datasource:
+        url: jdbc:postgresql://localhost:5432/SpringFirstProject
+        username: postgres
+        password: root
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+        format-sql: true
+
+server:
+  port: 8083
+
+
