@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.lcwd.user.service.userservice.exceptions.ResourceNotFoundException;
+import com.lcwd.user.service.userservice.external.services.HotelService;
 import com.lcwd.user.service.userservice.model.Hotel;
 import com.lcwd.user.service.userservice.model.Rating;
 import com.lcwd.user.service.userservice.model.User;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private HotelService hotelService;
 
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -60,10 +64,17 @@ public class UserServiceImpl implements UserService {
         List<Rating> ratingList = ratings.stream().map(rating -> {
             // api call to hotel service to get the hotel
             // http://localhost:8082/hotels/5802b477-7c49-48f8-8db1-42f21fe9e3d0
-            ResponseEntity<Hotel> forHotel = restTemplate
-                    .getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
-            Hotel hotel = forHotel.getBody();
-            logger.info("response status code: ", forHotel.getStatusCode());
+
+            // Using restTemplate
+            // ResponseEntity<Hotel> forHotel = restTemplate
+            // .getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(),
+            // Hotel.class);
+
+            // Hotel hotel = forHotel.getBody();
+            // logger.info("response status code: ", forHotel.getStatusCode());
+
+            // Using FeignClient
+            Hotel hotel = hotelService.getHotel(rating.getHotelId());
 
             // set the hotel to rating
             rating.setHotel(hotel);
