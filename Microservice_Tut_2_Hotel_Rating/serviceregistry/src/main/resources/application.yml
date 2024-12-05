@@ -1,6 +1,8 @@
 spring:
     application:
         name: serviceregistry
+    config:
+      import: optional:configserver:http://localhost:8085
 
 eureka:
     instance:
