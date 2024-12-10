@@ -1,6 +1,6 @@
 # Spring Boot Learning Tutorials
 
-Welcome to my Spring Boot learning journey! This repository contains a series of tutorials and projects that I've been working on as I explore the powerful capabilities of Spring Boot. Whether you're a beginner or looking to enhance your Spring Boot skills, this repo will have something for you.
+Welcome to my Spring Boot learning journey! This repository contains a series of tutorials and projects that I've been working on as I explore the powerful capabilities of Spring Boot. Whether you're a beginner or looking to enhance your Spring Boot skills, this repo surely be of help to you.
 
 
 ## Introduction
