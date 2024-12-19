@@ -1,0 +1,41 @@
+AI:
+AI is about making machines think and act like humans. It's like teaching a computer to solve problems on its own!
+
+ML:
+ML is a part of AI where machines learn from data instead of directly told what to do.
+
+GPT:
+Generative Pretrained Transformer is an advanced AI model created by OpenAI. It's designed to understand and generate human-like text based on what you ask it or provide as input.
+
+Spring AI is a concept that aims to simplify the integration of AI and ML models into Spring-based applications.
+
+It provides abstractions and tools to interact with AI APIs like OpenAI,Hugging Face, or custom models deployed via REST endpoints.
+
+
+It abstracts API calls to AI services,enabling developers to interact with models for:
+    - Text Generation E.g.chatbots
+    - Image Generation E.g. AI art
+    - Classification and predictions E.g. recommendation systems
+    - Custom tasks based on ML models.
+
+Key Terminologies:
+    - Prompt
+        A prompt is the input text or query you provide to the AI model to generate text. Crafting a good prompt ensures relevant,accurate, and contextual responses.
+
+    - Token
+        The smallest unit of text the model processes. Tokens can be words, characters, or sub-words.
+    
+    - Max Tokens   
+        The maximum number of tokens allowed in the output.
+
+    - Temperature
+        Controls the randomness of the output.
+        = Lower values(e.g. 0.2): Output is more deterministic and focused.
+        = Higher values(e.g. 0.8): Output is more creative and diverse.
+
+    - model 
+        - The specific AI model used for generation. Examples:
+            - text-davinci-003(GPT-3.5):High quality,versatile.
+            - gpt-4 : Advanced reasoning and larger contexts.
+    
+    
