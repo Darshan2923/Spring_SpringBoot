@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: blabberboot
+
+    data:
+        mongodb:
+            username: darshan
+            password: darshan
+            host: localhost
+            port: 27017
+            database: blabberboot
+            authentication-database: admin
+
+server:
+    port: 8088
+    
