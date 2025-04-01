@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class BillingServiceGrpcClient {
 
         private static final Logger log = LoggerFactory.getLogger(
-                        BillingServiceGrpcClient.class);
+                        BillingServiceGrpcClient.class); 
         private final BillingServiceGrpc.BillingServiceBlockingStub blockingStub;
 
         public BillingServiceGrpcClient(
