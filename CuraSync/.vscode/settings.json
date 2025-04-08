@@ -1,3 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.maven.globalSettings": "...",
+    "java.configuration.maven.userSettings": "...",
+    "java.configuration.srcDirs": [
+        "src/main/java",
+        "target/generated-sources/protobuf/java"
+    ]
 }
