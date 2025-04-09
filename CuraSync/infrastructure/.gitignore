@@ -1,0 +1,3 @@
+# AWS CDK synth output
+cdk.out/
+target/
