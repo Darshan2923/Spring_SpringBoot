@@ -63,10 +63,15 @@ CuraSync is designed to tackle the challenges of modern hospital operations with
 ## 🏗️ Architecture Diagrams
 
 ### 🔧 Development Architecture  
-_(Insert professional system-level diagram)_
+![WhatsApp Image 2025-04-10 at 9 24 07 PM (2)](https://github.com/user-attachments/assets/29da20ba-18c7-434d-870b-3833916a069a)
 
 ### ☁️ Deployment Architecture  
-_(Insert clean diagram simulating AWS cloud services and routing)_
+![WhatsApp Image 2025-04-10 at 9 24 07 PM](https://github.com/user-attachments/assets/cda1be75-aa70-4bd8-866e-2ccb48b51573)
+
+### 🔌 gRPC Architecture
+![WhatsApp Image 2025-04-10 at 9 24 07 PM (1)](https://github.com/user-attachments/assets/07c9891d-01e0-490c-a8c4-ef04fa8ff1e9)
+
+
 
 ---
 
@@ -91,21 +96,17 @@ _(Insert clean diagram simulating AWS cloud services and routing)_
     ```bash
     cd <service-name>
     docker build -t <service-name> -f Dockerfile .
-
     ```
-    Repeat this step for each service you want to run.
 
 3.**Launch Infrastructure via LocalStack:**
     ```bash
     cd infrastructure
     ./localstack-deploy.sh
-
     ```
 
 4.**Access API Documentation via Swagger:**
     ```bash
     http://<localhost-address>:4004/api-docs/auth
-    
     ```
 
 ### Authentication Example (Patient Service)
@@ -113,7 +114,6 @@ _(Insert clean diagram simulating AWS cloud services and routing)_
 **Example Login Endpoint:**
 ```bash
     POST http://lb-1e2646ea.elb.localhost.localstack.cloud:4004/auth/login
-
 ```
 **Example Request Body**
 ```bash
@@ -121,7 +121,6 @@ _(Insert clean diagram simulating AWS cloud services and routing)_
         "email": "testuser@test.com",
         "password": "password123"
     }
-
 ```
 
 **Authorization Header:**
