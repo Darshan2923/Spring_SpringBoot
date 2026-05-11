@@ -1,0 +1,4 @@
+Errors i got along the way
+1) Postgres auth failed due to 2 instances running of postgres and point to dev env when i dont have application-dev.yml.
+    fix, use different port for the same
+2) Timezone issue for postgres Asia/Calcutta, use vscode/launch.json
