@@ -1,5 +1,7 @@
 package com.darshan.saas.controllers;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +46,11 @@ public class CategoryController {
     public ResponseEntity<CategoryResponse> getCategoryById(
             @PathVariable("category-id") final String id) {
         return ResponseEntity.ok(this.categoryService.findById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoryResponse>> getAllCategories() {
+        return ResponseEntity.ok(this.categoryService.findAll());
     }
 
     @DeleteMapping("/{category-id}")

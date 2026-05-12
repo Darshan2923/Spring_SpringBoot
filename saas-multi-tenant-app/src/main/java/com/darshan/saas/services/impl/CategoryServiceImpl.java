@@ -2,6 +2,7 @@ package com.darshan.saas.services.impl;
 
 import com.darshan.saas.entities.Category;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -71,6 +72,11 @@ public class CategoryServiceImpl implements CategoryService {
             log.debug("Category already exists");
             throw new RuntimeException("Category already exists");
         }
+    }
+
+    @Override
+    public List<CategoryResponse> findAll() {
+        return this.categoryRepository.findAll().stream().map(this.categoryMapper::toResponse).toList();
     }
 
 }
