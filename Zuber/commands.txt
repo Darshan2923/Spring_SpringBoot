@@ -1,0 +1,26 @@
+> Install redis
+docker run -d --name redis-geo -p 6379:6379 redis:latest
+
+> Connect to redis cli
+docker exec -it redis-geo redis-cli
+
+> Add locations of drivers
+ GEOADD drivers 77.5946 12.9716 "driver:1"
+
+ GEOADD drivers 77.5800 12.9800 "driver:2"
+
+GEOADD drivers 77.6100 12.9600 "driver:3"
+
+ GEOADD drivers 77.5500 12.9900 "driver:4"
+
+GEOADD drivers 77.6500 12.9200 "driver:5"
+
+> Search By query
+GEOSEARCH drivers FROMMEMBER "driver:1" BYRADIUS 5 km ASC COUNT 3
+
+> Get distance drivers
+GEODIST drivers "driver:1" "driver:2" km
+
+> Get coordinates of the drivers
+GEOPOS drivers "driver:1"
+
